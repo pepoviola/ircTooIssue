@@ -24,7 +24,6 @@
  client.addListener('message', function (from, to, message) {
 	 			     console.log('MESSAGE');
 				     var data = from + ' => ' + to + ': ' + message+"\n";
-				     //console.log(from + ' => ' + to + ': ' + message);
 				     logger(data);
  });
  
@@ -32,7 +31,6 @@
  client.addListener('join', function (channel, nick, message) {
 	 			     console.log('JOIN');
 				     var data = "join to "+channel+" => "+nick+"\n";
-				     //console.log(channel + ' => ' + nick + ': ' + util.inspect(message));
 				     logger(data);
 
  });
@@ -40,7 +38,13 @@
  client.addListener('part', function (channel, nick, message) {
 	 			     console.log('PART');
 				     var data = nick+" leave "+channel+"\n";
-				     //console.log(channel + ' => ' + nick + ': ' + util.inspect(message));
+				     logger(data);
+
+ });
+
+ client.addListener('quit', function (nick, cmd, message) {
+	 			     console.log('QUIT');
+				     var data = "Quit =>"+nick+" ("+cmd+") \n";
 				     logger(data);
 
  });
